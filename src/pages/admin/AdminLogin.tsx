@@ -16,7 +16,6 @@ const AdminLogin = () => {
 
   if (isAuthenticated) {
     navigate("/admin", { replace: true });
-    return null;
   }
 
   const handleSubmit = (e: React.FormEvent) => {
