@@ -31,6 +31,7 @@ const services = [
 
 const ServiceCategories = () => {
   const { ref, isVisible } = useScrollReveal();
+  const navigate = useNavigate();
 
   return (
     <section ref={ref} className="py-24 px-6 bg-muted/50">
