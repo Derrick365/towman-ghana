@@ -49,6 +49,7 @@ const OperatorDetail = () => {
 
   return (
     <div className="min-h-screen bg-muted/30">
+      <Navbar />
       <div className="bg-primary pb-6 pt-4">
         <div className="h-16" />
         <div className="container mx-auto px-6 pt-4">
