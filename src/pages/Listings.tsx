@@ -44,7 +44,8 @@ const listings = [
 ];
 
 const Listings = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchParams] = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState(searchParams.get("q") || "");
   const [selectedRegion, setSelectedRegion] = useState("All Regions");
   const [selectedType, setSelectedType] = useState("All Types");
   const { ref, isVisible } = useScrollReveal(0.05);
