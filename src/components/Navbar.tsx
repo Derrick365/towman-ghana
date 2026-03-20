@@ -18,12 +18,15 @@ const Navbar = () => {
           <Link to="/listings" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
             Find Operators
           </Link>
-          <Link to="/listings" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-            Services
+          <Link to="/request-tow" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+            Request a Tow
           </Link>
-          <a href="/#how-it-works" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+          <Link to="/about" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
             About
-          </a>
+          </Link>
+          <Link to="/faq" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+            FAQ
+          </Link>
           <Link to="/login" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
             Log In
           </Link>
