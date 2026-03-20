@@ -44,18 +44,29 @@ const AdminActivity = () => {
           <p className="text-sm text-muted-foreground">Track all admin actions</p>
         </div>
 
-        <div className="flex flex-wrap gap-1.5">
-          {["all", "approval", "rejection", "registration", "suspension", "edit"].map((t) => (
-            <Button
-              key={t}
-              variant={filter === t ? "default" : "outline"}
-              size="sm"
-              onClick={() => setFilter(t)}
-              className="text-xs capitalize"
-            >
-              {t === "all" ? "All" : typeLabels[t]}
-            </Button>
-          ))}
+        <div className="flex flex-col sm:flex-row gap-3">
+          <div className="relative flex-1 max-w-sm">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            <Input
+              placeholder="Search by name, action, or actor..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="pl-9"
+            />
+          </div>
+          <div className="flex flex-wrap gap-1.5">
+            {["all", "approval", "rejection", "registration", "suspension", "edit"].map((t) => (
+              <Button
+                key={t}
+                variant={filter === t ? "default" : "outline"}
+                size="sm"
+                onClick={() => setFilter(t)}
+                className="text-xs capitalize"
+              >
+                {t === "all" ? "All" : typeLabels[t]}
+              </Button>
+            ))}
+          </div>
         </div>
 
         <Card>
