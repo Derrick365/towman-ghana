@@ -60,6 +60,7 @@ const Listings = () => {
 
   return (
     <div className="min-h-screen bg-muted/30">
+      <Navbar />
       {/* Header with dark bg for navbar visibility */}
       <div className="bg-primary pb-12 pt-4">
         <div className="h-16" /> {/* spacer for navbar */}
