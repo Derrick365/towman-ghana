@@ -26,7 +26,7 @@ const HowItWorks = () => {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section ref={ref} className="py-24 px-6 bg-background">
+    <section id="how-it-works" ref={ref} className="py-24 px-6 bg-background">
       <div className="container mx-auto max-w-5xl">
         <div className="text-center mb-16 space-y-4">
           <h2
