@@ -2,7 +2,9 @@ import { useState } from "react";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { activityLogs } from "@/lib/admin-data";
+import { Search } from "lucide-react";
 
 const typeColors: Record<string, string> = {
   approval: "bg-emerald-500",
