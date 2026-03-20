@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { MapPin, Star, Filter, Search, ChevronDown } from "lucide-react";
@@ -48,6 +48,7 @@ const Listings = () => {
   const [searchQuery, setSearchQuery] = useState(searchParams.get("q") || "");
   const [selectedRegion, setSelectedRegion] = useState("All Regions");
   const [selectedType, setSelectedType] = useState("All Types");
+  const navigate = useNavigate();
   const { ref, isVisible } = useScrollReveal(0.05);
 
   const filtered = listings.filter((l) => {
@@ -178,8 +179,13 @@ const Listings = () => {
                 </div>
 
                 {/* Action */}
-                <Button variant="outline" size="sm" className="w-full text-xs">
-                  Contact Operator
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full text-xs"
+                  onClick={() => navigate(`/operator/${truck.id}`)}
+                >
+                  View Operator
                 </Button>
               </div>
             ))}
