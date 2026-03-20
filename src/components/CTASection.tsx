@@ -1,6 +1,7 @@
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const CTASection = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -38,12 +39,14 @@ const CTASection = () => {
           }`}
           style={{ animationDelay: "0.2s" }}
         >
-          <Button variant="hero" size="lg">
-            Register for Free
-            <ArrowRight className="w-4 h-4 ml-1" />
+          <Button variant="hero" size="lg" asChild>
+            <Link to="/listings">
+              Register for Free
+              <ArrowRight className="w-4 h-4 ml-1" />
+            </Link>
           </Button>
-          <Button variant="heroOutline" size="lg">
-            Learn More
+          <Button variant="heroOutline" size="lg" asChild>
+            <a href="#how-it-works">Learn More</a>
           </Button>
         </div>
       </div>

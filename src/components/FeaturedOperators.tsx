@@ -1,6 +1,7 @@
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-import { MapPin, Star, Phone } from "lucide-react";
+import { MapPin, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link, useNavigate } from "react-router-dom";
 
 const operators = [
   {
@@ -34,6 +35,7 @@ const operators = [
 
 const FeaturedOperators = () => {
   const { ref, isVisible } = useScrollReveal();
+  const navigate = useNavigate();
 
   return (
     <section ref={ref} className="py-24 px-6 bg-background">
@@ -62,8 +64,9 @@ const FeaturedOperators = () => {
               isVisible ? "animate-reveal-up" : "opacity-0"
             }`}
             style={{ animationDelay: "0.15s" }}
+            asChild
           >
-            View All Operators
+            <Link to="/listings">View All Operators</Link>
           </Button>
         </div>
 
@@ -123,9 +126,8 @@ const FeaturedOperators = () => {
                 ))}
               </div>
 
-              <Button variant="outline" className="w-full" size="sm">
-                <Phone className="w-3.5 h-3.5 mr-1.5" />
-                Contact Operator
+              <Button variant="outline" className="w-full" size="sm" onClick={() => navigate(`/operator/${i + 1}`)}>
+                View Operator
               </Button>
             </div>
           ))}
