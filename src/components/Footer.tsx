@@ -1,4 +1,5 @@
 import { MapPin, Phone, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -22,23 +23,23 @@ const Footer = () => {
               Quick Links
             </h4>
             <ul className="space-y-2.5 text-sm">
-              <li><a href="#" className="hover:text-secondary transition-colors">Find a Tow Truck</a></li>
-              <li><a href="#" className="hover:text-secondary transition-colors">Register as Operator</a></li>
-              <li><a href="#" className="hover:text-secondary transition-colors">Service Areas</a></li>
-              <li><a href="#" className="hover:text-secondary transition-colors">About Us</a></li>
+              <li><Link to="/listings" className="hover:text-secondary transition-colors">Find a Tow Truck</Link></li>
+              <li><Link to="/register" className="hover:text-secondary transition-colors">Register as Operator</Link></li>
+              <li><Link to="/request-tow" className="hover:text-secondary transition-colors">Request a Tow</Link></li>
+              <li><Link to="/about" className="hover:text-secondary transition-colors">About Us</Link></li>
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Resources */}
           <div className="space-y-4">
             <h4 className="text-sm font-semibold text-primary-foreground uppercase tracking-wider">
-              Services
+              Resources
             </h4>
             <ul className="space-y-2.5 text-sm">
-              <li><a href="#" className="hover:text-secondary transition-colors">Flatbed Towing</a></li>
-              <li><a href="#" className="hover:text-secondary transition-colors">Heavy Haulage</a></li>
-              <li><a href="#" className="hover:text-secondary transition-colors">Roadside Recovery</a></li>
-              <li><a href="#" className="hover:text-secondary transition-colors">Accident Towing</a></li>
+              <li><Link to="/faq" className="hover:text-secondary transition-colors">FAQ</Link></li>
+              <li><Link to="/contact" className="hover:text-secondary transition-colors">Contact Us</Link></li>
+              <li><Link to="/terms" className="hover:text-secondary transition-colors">Terms of Service</Link></li>
+              <li><Link to="/privacy" className="hover:text-secondary transition-colors">Privacy Policy</Link></li>
             </ul>
           </div>
 
