@@ -24,9 +24,6 @@ const Navbar = () => {
           <Link to="/about" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
             About
           </Link>
-          <Link to="/faq" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-            FAQ
-          </Link>
           <Link to="/login" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
             Log In
           </Link>
@@ -51,7 +48,7 @@ const Navbar = () => {
           <Link to="/listings" className="block text-sm text-primary-foreground/80 py-2" onClick={() => setOpen(false)}>Find Operators</Link>
           <Link to="/request-tow" className="block text-sm text-primary-foreground/80 py-2" onClick={() => setOpen(false)}>Request a Tow</Link>
           <Link to="/about" className="block text-sm text-primary-foreground/80 py-2" onClick={() => setOpen(false)}>About</Link>
-          <Link to="/faq" className="block text-sm text-primary-foreground/80 py-2" onClick={() => setOpen(false)}>FAQ</Link>
+          
           <Link to="/login" className="block text-sm text-primary-foreground/80 py-2" onClick={() => setOpen(false)}>Log In</Link>
           <Button variant="hero" size="sm" className="w-full" asChild>
             <Link to="/register" onClick={() => setOpen(false)}>Register Free</Link>
