@@ -92,21 +92,6 @@ const Register = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      {/* Header */}
-      <div className="bg-primary px-6 py-4">
-        <div className="container mx-auto flex items-center gap-4">
-          <Link to="/" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-            <ArrowLeft className="w-5 h-5" />
-          </Link>
-          <div>
-            <h1 className="text-lg font-display font-bold text-primary-foreground">
-              Operator Registration
-            </h1>
-            <p className="text-xs text-primary-foreground/60">100% Free — No charges</p>
-          </div>
-        </div>
-      </div>
-
       {/* Form */}
       <div className="container mx-auto max-w-lg px-6 py-8">
         <form onSubmit={handleSubmit} className="space-y-5">

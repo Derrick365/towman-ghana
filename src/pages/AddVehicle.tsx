@@ -96,19 +96,6 @@ const AddVehicle = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      {/* Header */}
-      <div className="bg-primary px-6 py-4">
-        <div className="container mx-auto flex items-center gap-4">
-          <Link to="/dashboard" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-            <ArrowLeft className="w-5 h-5" />
-          </Link>
-          <div>
-            <h1 className="text-lg font-display font-bold text-primary-foreground">Add Vehicle</h1>
-            <p className="text-xs text-primary-foreground/60">Provide details about your tow truck</p>
-          </div>
-        </div>
-      </div>
-
       <div className="container mx-auto max-w-lg px-6 py-8">
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Vehicle Type */}

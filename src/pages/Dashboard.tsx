@@ -45,21 +45,6 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      {/* Header */}
-      <div className="bg-primary px-6 py-4">
-        <div className="container mx-auto flex items-center gap-4">
-          <Link to="/" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-            <ArrowLeft className="w-5 h-5" />
-          </Link>
-          <div className="flex-1">
-            <h1 className="text-lg font-display font-bold text-primary-foreground">
-              My Dashboard
-            </h1>
-            <p className="text-xs text-primary-foreground/60">Manage your profile & vehicles</p>
-          </div>
-        </div>
-      </div>
-
       <div className="container mx-auto max-w-lg px-6 py-6 space-y-6">
         {/* Profile Summary */}
         <Card>
