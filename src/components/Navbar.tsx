@@ -15,17 +15,17 @@ const Navbar = () => {
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">
-          <a href="#" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+          <Link to="/listings" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
             Find Operators
-          </a>
+          </Link>
           <Link to="/listings" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
             Services
           </Link>
-          <a href="#" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+          <a href="#how-it-works" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
             About
           </a>
-          <Button variant="hero" size="sm">
-            Register
+          <Button variant="hero" size="sm" asChild>
+            <Link to="/listings">Register</Link>
           </Button>
         </div>
 
@@ -42,10 +42,12 @@ const Navbar = () => {
       {/* Mobile menu */}
       {open && (
         <div className="md:hidden mt-4 p-4 rounded-xl bg-foreground/90 backdrop-blur-sm space-y-3">
-          <a href="#" className="block text-sm text-primary-foreground/80 py-2">Find Operators</a>
-          <a href="#" className="block text-sm text-primary-foreground/80 py-2">Services</a>
-          <a href="#" className="block text-sm text-primary-foreground/80 py-2">About</a>
-          <Button variant="hero" size="sm" className="w-full">Register</Button>
+          <Link to="/listings" className="block text-sm text-primary-foreground/80 py-2" onClick={() => setOpen(false)}>Find Operators</Link>
+          <Link to="/listings" className="block text-sm text-primary-foreground/80 py-2" onClick={() => setOpen(false)}>Services</Link>
+          <a href="#how-it-works" className="block text-sm text-primary-foreground/80 py-2" onClick={() => setOpen(false)}>About</a>
+          <Button variant="hero" size="sm" className="w-full" asChild>
+            <Link to="/listings" onClick={() => setOpen(false)}>Register</Link>
+          </Button>
         </div>
       )}
     </nav>
