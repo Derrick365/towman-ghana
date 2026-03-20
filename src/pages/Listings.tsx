@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { MapPin, Star, Filter, Search, ChevronDown } from "lucide-react";
+import ListingsMap from "@/components/ListingsMap";
+import { MapPin, Star, Filter, Search, ChevronDown, Map, List } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
