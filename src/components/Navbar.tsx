@@ -24,9 +24,6 @@ const Navbar = () => {
           <Link to="/about" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
             About
           </Link>
-          <Link to="/faq" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-            FAQ
-          </Link>
           <Link to="/login" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
             Log In
           </Link>
