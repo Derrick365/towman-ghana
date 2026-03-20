@@ -122,6 +122,14 @@ const Listings = () => {
           <span className="text-sm text-muted-foreground">
             Showing <strong className="text-foreground">{filtered.length}</strong> vehicle{filtered.length !== 1 ? "s" : ""}
           </span>
+          <div className="flex gap-1 bg-card border border-border rounded-lg p-1">
+            <button onClick={() => setViewMode("list")} className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${viewMode === "list" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}>
+              <List className="w-4 h-4" />
+            </button>
+            <button onClick={() => setViewMode("map")} className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${viewMode === "map" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}>
+              <Map className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
         {filtered.length === 0 ? (
