@@ -33,7 +33,10 @@ const OperatorDetail = () => {
   const operator = operators[Number(id)];
   const [activePhoto, setActivePhoto] = useState(0);
   const [showContact, setShowContact] = useState(false);
+  const [userReviews, setUserReviews] = useState<{ name: string; text: string; rating: number; date: string }[]>([]);
   const { ref, isVisible } = useScrollReveal(0.05);
+
+  const allComments = operator ? [...userReviews, ...operator.comments] : [];
 
   if (!operator) {
     return (
