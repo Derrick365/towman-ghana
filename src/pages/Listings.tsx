@@ -52,6 +52,7 @@ const Listings = () => {
   const [selectedType, setSelectedType] = useState(
     typeParam && ["Flatbed", "Wheel-Lift", "Heavy Duty", "Carrier", "Rollback"].includes(typeParam) ? typeParam : "All Types"
   );
+  const [viewMode, setViewMode] = useState<"list" | "map">("list");
   const navigate = useNavigate();
   const { ref, isVisible } = useScrollReveal(0.05);
 
