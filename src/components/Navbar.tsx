@@ -18,7 +18,7 @@ const Navbar = () => {
           <a href="#" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
             Find Operators
           </a>
-          <a href="#" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+          <Link to="/listings" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
             Services
           </a>
           <a href="#" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
