@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAdminAuth } from "@/lib/admin-auth";
 import { Button } from "@/components/ui/button";
@@ -14,9 +14,9 @@ const AdminLogin = () => {
   const { login, isAuthenticated } = useAdminAuth();
   const navigate = useNavigate();
 
-  if (isAuthenticated) {
-    navigate("/admin", { replace: true });
-  }
+  useEffect(() => {
+    if (isAuthenticated) navigate("/admin", { replace: true });
+  }, [isAuthenticated, navigate]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
