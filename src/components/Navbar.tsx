@@ -18,12 +18,15 @@ const Navbar = () => {
           <Link to="/listings" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
             Find Operators
           </Link>
-          <Link to="/listings" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-            Services
+          <Link to="/request-tow" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+            Request a Tow
           </Link>
-          <a href="/#how-it-works" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+          <Link to="/about" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
             About
-          </a>
+          </Link>
+          <Link to="/faq" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+            FAQ
+          </Link>
           <Link to="/login" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
             Log In
           </Link>
@@ -46,8 +49,9 @@ const Navbar = () => {
       {open && (
         <div className="md:hidden mt-4 p-4 rounded-xl bg-foreground/90 backdrop-blur-sm space-y-3">
           <Link to="/listings" className="block text-sm text-primary-foreground/80 py-2" onClick={() => setOpen(false)}>Find Operators</Link>
-          <Link to="/listings" className="block text-sm text-primary-foreground/80 py-2" onClick={() => setOpen(false)}>Services</Link>
-          <a href="/#how-it-works" className="block text-sm text-primary-foreground/80 py-2" onClick={() => setOpen(false)}>About</a>
+          <Link to="/request-tow" className="block text-sm text-primary-foreground/80 py-2" onClick={() => setOpen(false)}>Request a Tow</Link>
+          <Link to="/about" className="block text-sm text-primary-foreground/80 py-2" onClick={() => setOpen(false)}>About</Link>
+          <Link to="/faq" className="block text-sm text-primary-foreground/80 py-2" onClick={() => setOpen(false)}>FAQ</Link>
           <Link to="/login" className="block text-sm text-primary-foreground/80 py-2" onClick={() => setOpen(false)}>Log In</Link>
           <Button variant="hero" size="sm" className="w-full" asChild>
             <Link to="/register" onClick={() => setOpen(false)}>Register Free</Link>

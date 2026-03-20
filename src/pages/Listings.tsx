@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { MapPin, Star, Filter, Search, ChevronDown } from "lucide-react";
+import ListingsMap from "@/components/ListingsMap";
+import { MapPin, Star, Filter, Search, ChevronDown, Map, List } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
@@ -51,6 +52,7 @@ const Listings = () => {
   const [selectedType, setSelectedType] = useState(
     typeParam && ["Flatbed", "Wheel-Lift", "Heavy Duty", "Carrier", "Rollback"].includes(typeParam) ? typeParam : "All Types"
   );
+  const [viewMode, setViewMode] = useState<"list" | "map">("list");
   const navigate = useNavigate();
   const { ref, isVisible } = useScrollReveal(0.05);
 
@@ -120,9 +122,26 @@ const Listings = () => {
           <span className="text-sm text-muted-foreground">
             Showing <strong className="text-foreground">{filtered.length}</strong> vehicle{filtered.length !== 1 ? "s" : ""}
           </span>
+          <div className="flex gap-1 bg-card border border-border rounded-lg p-1">
+            <button onClick={() => setViewMode("list")} className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${viewMode === "list" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}>
+              <List className="w-4 h-4" />
+            </button>
+            <button onClick={() => setViewMode("map")} className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${viewMode === "map" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}>
+              <Map className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
-        {filtered.length === 0 ? (
+        {viewMode === "map" ? (
+          <div className="h-[500px] rounded-xl overflow-hidden border border-border">
+            <ListingsMap
+              searchQuery={searchQuery}
+              selectedRegion={selectedRegion}
+              selectedType={selectedType}
+              onSelectOperator={(id) => navigate(`/operator/${id}`)}
+            />
+          </div>
+        ) : filtered.length === 0 ? (
           <div className="text-center py-20 space-y-3">
             <Filter className="w-10 h-10 text-muted-foreground/40 mx-auto" />
             <p className="text-muted-foreground font-medium">No vehicles match your filters</p>

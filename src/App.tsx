@@ -12,6 +12,13 @@ import Dashboard from "./pages/Dashboard.tsx";
 import AddVehicle from "./pages/AddVehicle.tsx";
 import Login from "./pages/Login.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import About from "./pages/About.tsx";
+import Terms from "./pages/Terms.tsx";
+import Privacy from "./pages/Privacy.tsx";
+import Contact from "./pages/Contact.tsx";
+import FAQ from "./pages/FAQ.tsx";
+import RequestTow from "./pages/RequestTow.tsx";
+import OperatorDashboard from "./pages/OperatorDashboard.tsx";
 import AdminLogin from "./pages/admin/AdminLogin.tsx";
 import AdminDashboard from "./pages/admin/AdminDashboard.tsx";
 import AdminOperators from "./pages/admin/AdminOperators.tsx";
@@ -37,6 +44,13 @@ const App = () => (
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/add-vehicle" element={<AddVehicle />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/request-tow" element={<RequestTow />} />
+            <Route path="/operator-dashboard" element={<OperatorDashboard />} />
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/admin/operators" element={<AdminOperators />} />
