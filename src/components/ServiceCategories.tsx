@@ -58,26 +58,26 @@ const ServiceCategories = () => {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
           {services.map((service, i) => (
             <button
               key={service.label}
               onClick={() => navigate(`/listings?type=${encodeURIComponent(service.filterType)}`)}
-              className={`group text-left p-6 rounded-xl bg-background border border-border hover:border-secondary/50 hover:shadow-md transition-all duration-300 active:scale-[0.97] ${
+              className={`group text-left p-4 sm:p-6 rounded-xl bg-background border border-border hover:border-secondary/50 hover:shadow-md transition-all duration-300 active:scale-[0.97] ${
                 isVisible ? "animate-reveal-scale" : "opacity-0"
               }`}
               style={{ animationDelay: `${0.15 + i * 0.08}s` }}
             >
-              <div className="w-11 h-11 rounded-lg bg-gold-light flex items-center justify-center mb-4 group-hover:bg-secondary/20 transition-colors duration-300">
-                <service.icon className="w-5 h-5 text-earth" />
+              <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-gold-light flex items-center justify-center mb-3 sm:mb-4 group-hover:bg-secondary/20 transition-colors duration-300">
+                <service.icon className="w-4 h-4 sm:w-5 sm:h-5 text-earth" />
               </div>
-              <h3 className="font-semibold font-display text-foreground mb-1">
+              <h3 className="text-xs sm:text-base font-semibold font-display text-foreground mb-0.5 sm:mb-1">
                 {service.label}
               </h3>
-              <p className="text-sm text-muted-foreground mb-3">
+              <p className="text-[11px] sm:text-sm text-muted-foreground mb-2 sm:mb-3 hidden sm:block">
                 {service.description}
               </p>
-              <span className="text-xs font-medium text-secondary tabular-nums">
+              <span className="text-[10px] sm:text-xs font-medium text-secondary tabular-nums">
                 {service.count} operators
               </span>
             </button>
