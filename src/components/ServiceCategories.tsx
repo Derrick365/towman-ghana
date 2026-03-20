@@ -6,24 +6,28 @@ const services = [
   {
     icon: Truck,
     label: "Flatbed Towing",
+    filterType: "Flatbed",
     count: 84,
     description: "Safe transport for all vehicle types",
   },
   {
     icon: Container,
     label: "Heavy Haulage",
+    filterType: "Heavy Duty",
     count: 37,
     description: "Containers, machinery & oversized loads",
   },
   {
     icon: Wrench,
     label: "Roadside Recovery",
+    filterType: "Rollback",
     count: 62,
     description: "Breakdowns, accidents & stuck vehicles",
   },
   {
     icon: Shield,
     label: "Accident Towing",
+    filterType: "Wheel-Lift",
     count: 55,
     description: "Insured & certified crash recovery",
   },
