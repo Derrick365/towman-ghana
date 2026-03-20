@@ -1,28 +1,33 @@
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { Truck, Container, Wrench, Shield } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const services = [
   {
     icon: Truck,
     label: "Flatbed Towing",
+    filterType: "Flatbed",
     count: 84,
     description: "Safe transport for all vehicle types",
   },
   {
     icon: Container,
     label: "Heavy Haulage",
+    filterType: "Heavy Duty",
     count: 37,
     description: "Containers, machinery & oversized loads",
   },
   {
     icon: Wrench,
     label: "Roadside Recovery",
+    filterType: "Rollback",
     count: 62,
     description: "Breakdowns, accidents & stuck vehicles",
   },
   {
     icon: Shield,
     label: "Accident Towing",
+    filterType: "Wheel-Lift",
     count: 55,
     description: "Insured & certified crash recovery",
   },
@@ -30,6 +35,7 @@ const services = [
 
 const ServiceCategories = () => {
   const { ref, isVisible } = useScrollReveal();
+  const navigate = useNavigate();
 
   return (
     <section ref={ref} className="py-24 px-6 bg-muted/50">
@@ -56,6 +62,7 @@ const ServiceCategories = () => {
           {services.map((service, i) => (
             <button
               key={service.label}
+              onClick={() => navigate(`/listings?type=${encodeURIComponent(service.filterType)}`)}
               className={`group text-left p-6 rounded-xl bg-background border border-border hover:border-secondary/50 hover:shadow-md transition-all duration-300 active:scale-[0.97] ${
                 isVisible ? "animate-reveal-scale" : "opacity-0"
               }`}
