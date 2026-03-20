@@ -63,8 +63,9 @@ const FeaturedOperators = () => {
               isVisible ? "animate-reveal-up" : "opacity-0"
             }`}
             style={{ animationDelay: "0.15s" }}
+            asChild
           >
-            View All Operators
+            <Link to="/listings">View All Operators</Link>
           </Button>
         </div>
 
