@@ -1,5 +1,6 @@
 import { MapPin, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-tow.jpg";
 
 const Hero = () => {
