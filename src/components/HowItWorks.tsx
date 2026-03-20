@@ -26,18 +26,18 @@ const HowItWorks = () => {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section id="how-it-works" ref={ref} className="py-24 px-6 bg-background">
+    <section id="how-it-works" ref={ref} className="py-16 md:py-24 px-6 bg-background">
       <div className="container mx-auto max-w-5xl">
-        <div className="text-center mb-16 space-y-4">
+        <div className="text-center mb-8 md:mb-16 space-y-3">
           <h2
-            className={`text-3xl sm:text-4xl font-bold font-display text-foreground ${
+            className={`text-2xl sm:text-4xl font-bold font-display text-foreground ${
               isVisible ? "animate-reveal-up" : "opacity-0"
             }`}
           >
             How It Works
           </h2>
           <p
-            className={`text-muted-foreground max-w-md mx-auto ${
+            className={`text-muted-foreground text-sm max-w-md mx-auto ${
               isVisible ? "animate-reveal-up" : "opacity-0"
             }`}
             style={{ animationDelay: "0.1s" }}
@@ -46,7 +46,33 @@ const HowItWorks = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        {/* Mobile: compact horizontal rows */}
+        <div className="flex flex-col gap-3 md:hidden">
+          {steps.map((step, i) => (
+            <div
+              key={step.title}
+              className={`flex items-center gap-4 p-4 rounded-xl bg-card border border-border ${
+                isVisible ? "animate-reveal-up" : "opacity-0"
+              }`}
+              style={{ animationDelay: `${0.15 + i * 0.1}s` }}
+            >
+              <div className="w-10 h-10 rounded-lg bg-forest-light flex items-center justify-center shrink-0">
+                <step.icon className="w-5 h-5 text-primary" />
+              </div>
+              <div className="min-w-0">
+                <h3 className="text-sm font-semibold font-display text-foreground">
+                  {step.title}
+                </h3>
+                <p className="text-muted-foreground text-xs leading-snug mt-0.5">
+                  {step.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop: original card grid */}
+        <div className="hidden md:grid md:grid-cols-3 gap-8">
           {steps.map((step, i) => (
             <div
               key={step.title}
