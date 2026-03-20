@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { MapPin, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import heroImage from "@/assets/hero-tow.jpg";
 
 const Hero = () => {
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
       {/* Background image */}
@@ -52,14 +55,20 @@ const Hero = () => {
               <input
                 type="text"
                 placeholder="Enter your location (e.g. Accra, Kumasi)"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && navigate(`/listings?q=${encodeURIComponent(query)}`)}
                 className="w-full h-12 pl-12 pr-4 rounded-lg bg-background/95 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-secondary text-sm"
               />
             </div>
-            <Button variant="hero" size="lg" className="h-12 px-6" asChild>
-              <Link to="/listings">
-                <Search className="w-4 h-4 mr-2" />
-                Find Tow Trucks
-              </Link>
+            <Button
+              variant="hero"
+              size="lg"
+              className="h-12 px-6"
+              onClick={() => navigate(`/listings?q=${encodeURIComponent(query)}`)}
+            >
+              <Search className="w-4 h-4 mr-2" />
+              Find Tow Trucks
             </Button>
           </div>
 
