@@ -58,7 +58,7 @@ const ServiceCategories = () => {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
           {services.map((service, i) => (
             <button
               key={service.label}
