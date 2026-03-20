@@ -21,9 +21,12 @@ const Navbar = () => {
           <Link to="/listings" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
             Services
           </Link>
-          <a href="#how-it-works" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+          <a href="/#how-it-works" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
             About
           </a>
+          <Link to="/login" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+            Log In
+          </Link>
           <Button variant="hero" size="sm" asChild>
             <Link to="/register">Register Free</Link>
           </Button>
