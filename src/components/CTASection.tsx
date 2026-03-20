@@ -8,6 +8,13 @@ const CTASection = () => {
   return (
     <section ref={ref} className="py-24 px-6 bg-primary">
       <div className="container mx-auto max-w-3xl text-center space-y-8">
+        <div
+          className={`inline-block px-4 py-1.5 rounded-full bg-secondary/20 text-secondary text-sm font-semibold tracking-wide mb-4 ${
+            isVisible ? "animate-reveal-up" : "opacity-0"
+          }`}
+        >
+          ✦ 100% Free Registration
+        </div>
         <h2
           className={`text-3xl sm:text-4xl font-bold font-display text-primary-foreground ${
             isVisible ? "animate-reveal-up" : "opacity-0"
@@ -22,7 +29,7 @@ const CTASection = () => {
           }`}
           style={{ animationDelay: "0.1s" }}
         >
-          Register your fleet, reach customers across the country, and grow your
+          Register your fleet for free, reach customers across the country, and grow your
           towing business with Ghana's largest tow truck directory.
         </p>
         <div
@@ -32,7 +39,7 @@ const CTASection = () => {
           style={{ animationDelay: "0.2s" }}
         >
           <Button variant="hero" size="lg">
-            Register as an Operator
+            Register for Free
             <ArrowRight className="w-4 h-4 ml-1" />
           </Button>
           <Button variant="heroOutline" size="lg">
