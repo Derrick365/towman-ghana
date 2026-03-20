@@ -35,6 +35,7 @@ const operators = [
 
 const FeaturedOperators = () => {
   const { ref, isVisible } = useScrollReveal();
+  const navigate = useNavigate();
 
   return (
     <section ref={ref} className="py-24 px-6 bg-background">
