@@ -138,8 +138,8 @@ const Listings = () => {
               >
                 {/* Header */}
                 <div className="flex items-start gap-3.5 mb-4">
-                  <div className="w-11 h-11 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-display font-bold text-xs shrink-0">
-                    {truck.initials}
+                  <div className="w-11 h-11 rounded-lg overflow-hidden shrink-0">
+                    <img src={truck.photo} alt={truck.name} className="w-full h-full object-cover" />
                   </div>
                   <div className="min-w-0 flex-1">
                     <h3 className="font-semibold font-display text-foreground text-sm truncate">{truck.name}</h3>
