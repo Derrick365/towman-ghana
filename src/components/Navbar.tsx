@@ -25,7 +25,7 @@ const Navbar = () => {
             About
           </a>
           <Button variant="hero" size="sm" asChild>
-            <Link to="/listings">Register</Link>
+            <Link to="/register">Register Free</Link>
           </Button>
         </div>
 
