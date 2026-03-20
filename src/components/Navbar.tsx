@@ -21,9 +21,12 @@ const Navbar = () => {
           <Link to="/listings" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
             Services
           </Link>
-          <a href="#how-it-works" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+          <a href="/#how-it-works" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
             About
           </a>
+          <Link to="/login" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+            Log In
+          </Link>
           <Button variant="hero" size="sm" asChild>
             <Link to="/register">Register Free</Link>
           </Button>
@@ -44,7 +47,8 @@ const Navbar = () => {
         <div className="md:hidden mt-4 p-4 rounded-xl bg-foreground/90 backdrop-blur-sm space-y-3">
           <Link to="/listings" className="block text-sm text-primary-foreground/80 py-2" onClick={() => setOpen(false)}>Find Operators</Link>
           <Link to="/listings" className="block text-sm text-primary-foreground/80 py-2" onClick={() => setOpen(false)}>Services</Link>
-          <a href="#how-it-works" className="block text-sm text-primary-foreground/80 py-2" onClick={() => setOpen(false)}>About</a>
+          <a href="/#how-it-works" className="block text-sm text-primary-foreground/80 py-2" onClick={() => setOpen(false)}>About</a>
+          <Link to="/login" className="block text-sm text-primary-foreground/80 py-2" onClick={() => setOpen(false)}>Log In</Link>
           <Button variant="hero" size="sm" className="w-full" asChild>
             <Link to="/register" onClick={() => setOpen(false)}>Register Free</Link>
           </Button>
