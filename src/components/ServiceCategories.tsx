@@ -62,7 +62,7 @@ const ServiceCategories = () => {
           {services.map((service, i) => (
             <button
               key={service.label}
-              onClick={() => navigate(`/listings?type=${encodeURIComponent(service.label)}`)}
+              onClick={() => navigate(`/listings?type=${encodeURIComponent(service.filterType)}`)}
               className={`group text-left p-6 rounded-xl bg-background border border-border hover:border-secondary/50 hover:shadow-md transition-all duration-300 active:scale-[0.97] ${
                 isVisible ? "animate-reveal-scale" : "opacity-0"
               }`}

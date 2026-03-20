@@ -47,7 +47,10 @@ const Listings = () => {
   const [searchParams] = useSearchParams();
   const [searchQuery, setSearchQuery] = useState(searchParams.get("q") || "");
   const [selectedRegion, setSelectedRegion] = useState("All Regions");
-  const [selectedType, setSelectedType] = useState("All Types");
+  const typeParam = searchParams.get("type");
+  const [selectedType, setSelectedType] = useState(
+    typeParam && ["Flatbed", "Wheel-Lift", "Heavy Duty", "Carrier", "Rollback"].includes(typeParam) ? typeParam : "All Types"
+  );
   const navigate = useNavigate();
   const { ref, isVisible } = useScrollReveal(0.05);
 
