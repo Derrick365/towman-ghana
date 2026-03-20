@@ -24,10 +24,17 @@ const typeLabels: Record<string, string> = {
 
 const AdminActivity = () => {
   const [filter, setFilter] = useState("all");
+  const [search, setSearch] = useState("");
 
-  const filtered = filter === "all"
-    ? activityLogs
-    : activityLogs.filter((l) => l.type === filter);
+  const filtered = activityLogs.filter((l) => {
+    const matchType = filter === "all" || l.type === filter;
+    const matchSearch =
+      search === "" ||
+      l.target.toLowerCase().includes(search.toLowerCase()) ||
+      l.action.toLowerCase().includes(search.toLowerCase()) ||
+      l.actor.toLowerCase().includes(search.toLowerCase());
+    return matchType && matchSearch;
+  });
 
   return (
     <AdminLayout>
