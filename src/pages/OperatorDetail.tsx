@@ -89,7 +89,7 @@ const OperatorDetail = () => {
           <div className="lg:col-span-2 space-y-6">
             {/* Photo gallery */}
             <div className={`rounded-xl border border-border bg-card overflow-hidden ${isVisible ? "animate-reveal-up" : "opacity-0"}`} style={{ animationDelay: "0.1s" }}>
-              <div className="relative aspect-video bg-muted">
+              <div className="relative aspect-[4/3] sm:aspect-video bg-muted">
                 <img
                   src={operator.photos[activePhoto]}
                   alt={`${operator.name} vehicle ${activePhoto + 1}`}
@@ -99,30 +99,30 @@ const OperatorDetail = () => {
                   <>
                     <button
                       onClick={() => setActivePhoto((p) => (p === 0 ? operator.photos.length - 1 : p - 1))}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-foreground/60 text-primary-foreground flex items-center justify-center hover:bg-foreground/80 transition-colors active:scale-95"
+                      className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-8 sm:h-8 rounded-full bg-foreground/60 text-primary-foreground flex items-center justify-center hover:bg-foreground/80 transition-colors active:scale-95"
                     >
-                      <ChevronLeft className="w-4 h-4" />
+                      <ChevronLeft className="w-5 h-5 sm:w-4 sm:h-4" />
                     </button>
                     <button
                       onClick={() => setActivePhoto((p) => (p === operator.photos.length - 1 ? 0 : p + 1))}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-foreground/60 text-primary-foreground flex items-center justify-center hover:bg-foreground/80 transition-colors active:scale-95"
+                      className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-8 sm:h-8 rounded-full bg-foreground/60 text-primary-foreground flex items-center justify-center hover:bg-foreground/80 transition-colors active:scale-95"
                     >
-                      <ChevronRight className="w-4 h-4" />
+                      <ChevronRight className="w-5 h-5 sm:w-4 sm:h-4" />
                     </button>
-                    <span className="absolute bottom-3 right-3 text-xs bg-foreground/60 text-primary-foreground px-2 py-0.5 rounded-full tabular-nums">
+                    <span className="absolute bottom-2 sm:bottom-3 right-2 sm:right-3 text-xs bg-foreground/60 text-primary-foreground px-2 py-0.5 rounded-full tabular-nums">
                       {activePhoto + 1} / {operator.photos.length}
                     </span>
                   </>
                 )}
               </div>
               {/* Thumbnails */}
-              <div className="flex gap-1.5 p-3 overflow-x-auto">
+              <div className="grid grid-cols-4 sm:grid-cols-5 md:flex gap-2 p-3 overflow-x-auto">
                 {operator.photos.map((photo, i) => (
                   <button
                     key={i}
                     onClick={() => setActivePhoto(i)}
-                    className={`w-16 h-12 rounded-md overflow-hidden shrink-0 border-2 transition-all active:scale-95 ${
-                      i === activePhoto ? "border-secondary" : "border-transparent opacity-60 hover:opacity-100"
+                    className={`aspect-[4/3] md:w-20 md:h-14 rounded-lg overflow-hidden shrink-0 border-2 transition-all active:scale-95 ${
+                      i === activePhoto ? "border-secondary ring-1 ring-secondary/30" : "border-transparent opacity-50 hover:opacity-100"
                     }`}
                   >
                     <img src={photo} alt="" className="w-full h-full object-cover" />
