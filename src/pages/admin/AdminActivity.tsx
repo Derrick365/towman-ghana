@@ -2,7 +2,9 @@ import { useState } from "react";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { activityLogs } from "@/lib/admin-data";
+import { Search } from "lucide-react";
 
 const typeColors: Record<string, string> = {
   approval: "bg-emerald-500",
@@ -22,10 +24,17 @@ const typeLabels: Record<string, string> = {
 
 const AdminActivity = () => {
   const [filter, setFilter] = useState("all");
+  const [search, setSearch] = useState("");
 
-  const filtered = filter === "all"
-    ? activityLogs
-    : activityLogs.filter((l) => l.type === filter);
+  const filtered = activityLogs.filter((l) => {
+    const matchType = filter === "all" || l.type === filter;
+    const matchSearch =
+      search === "" ||
+      l.target.toLowerCase().includes(search.toLowerCase()) ||
+      l.action.toLowerCase().includes(search.toLowerCase()) ||
+      l.actor.toLowerCase().includes(search.toLowerCase());
+    return matchType && matchSearch;
+  });
 
   return (
     <AdminLayout>
@@ -35,18 +44,29 @@ const AdminActivity = () => {
           <p className="text-sm text-muted-foreground">Track all admin actions</p>
         </div>
 
-        <div className="flex flex-wrap gap-1.5">
-          {["all", "approval", "rejection", "registration", "suspension", "edit"].map((t) => (
-            <Button
-              key={t}
-              variant={filter === t ? "default" : "outline"}
-              size="sm"
-              onClick={() => setFilter(t)}
-              className="text-xs capitalize"
-            >
-              {t === "all" ? "All" : typeLabels[t]}
-            </Button>
-          ))}
+        <div className="flex flex-col sm:flex-row gap-3">
+          <div className="relative flex-1 max-w-sm">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            <Input
+              placeholder="Search by name, action, or actor..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="pl-9"
+            />
+          </div>
+          <div className="flex flex-wrap gap-1.5">
+            {["all", "approval", "rejection", "registration", "suspension", "edit"].map((t) => (
+              <Button
+                key={t}
+                variant={filter === t ? "default" : "outline"}
+                size="sm"
+                onClick={() => setFilter(t)}
+                className="text-xs capitalize"
+              >
+                {t === "all" ? "All" : typeLabels[t]}
+              </Button>
+            ))}
+          </div>
         </div>
 
         <Card>
