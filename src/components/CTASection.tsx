@@ -40,7 +40,7 @@ const CTASection = () => {
           style={{ animationDelay: "0.2s" }}
         >
           <Button variant="hero" size="lg" asChild>
-            <Link to="/listings">
+            <Link to="/register">
               Register for Free
               <ArrowRight className="w-4 h-4 ml-1" />
             </Link>

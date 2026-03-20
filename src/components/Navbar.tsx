@@ -25,7 +25,7 @@ const Navbar = () => {
             About
           </a>
           <Button variant="hero" size="sm" asChild>
-            <Link to="/listings">Register</Link>
+            <Link to="/register">Register Free</Link>
           </Button>
         </div>
 
@@ -46,7 +46,7 @@ const Navbar = () => {
           <Link to="/listings" className="block text-sm text-primary-foreground/80 py-2" onClick={() => setOpen(false)}>Services</Link>
           <a href="#how-it-works" className="block text-sm text-primary-foreground/80 py-2" onClick={() => setOpen(false)}>About</a>
           <Button variant="hero" size="sm" className="w-full" asChild>
-            <Link to="/listings" onClick={() => setOpen(false)}>Register</Link>
+            <Link to="/register" onClick={() => setOpen(false)}>Register Free</Link>
           </Button>
         </div>
       )}
