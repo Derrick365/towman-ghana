@@ -97,6 +97,7 @@ const AddVehicle = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <div className="container mx-auto max-w-lg px-6 py-8">
+        <h1 className="text-2xl font-display font-bold text-foreground mb-6">Add Vehicle</h1>
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Vehicle Type */}
           <div className="space-y-2">

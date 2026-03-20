@@ -46,6 +46,7 @@ const Dashboard = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <div className="container mx-auto max-w-lg px-6 py-6 space-y-6">
+        <h1 className="text-2xl font-display font-bold text-foreground">My Dashboard</h1>
         {/* Profile Summary */}
         <Card>
           <CardContent className="p-5 space-y-3">
