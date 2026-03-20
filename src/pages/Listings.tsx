@@ -132,7 +132,16 @@ const Listings = () => {
           </div>
         </div>
 
-        {filtered.length === 0 ? (
+        {viewMode === "map" ? (
+          <div className="h-[500px] rounded-xl overflow-hidden border border-border">
+            <ListingsMap
+              searchQuery={searchQuery}
+              selectedRegion={selectedRegion}
+              selectedType={selectedType}
+              onSelectOperator={(id) => navigate(`/operator/${id}`)}
+            />
+          </div>
+        ) : filtered.length === 0 ? (
           <div className="text-center py-20 space-y-3">
             <Filter className="w-10 h-10 text-muted-foreground/40 mx-auto" />
             <p className="text-muted-foreground font-medium">No vehicles match your filters</p>

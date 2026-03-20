@@ -7,12 +7,24 @@ import { Badge } from "@/components/ui/badge";
 import { Truck, DollarSign, Clock, CheckCircle2, XCircle, Phone, MapPin, TrendingUp } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const mockRequests = [
-  { id: 1, customer: "Ama Serwaa", phone: "+233 24 555 1234", issue: "Engine Failure", pickup: "Spintex Road, Accra", time: "12 min ago", status: "pending" as const },
-  { id: 2, customer: "Yaw Mensah", phone: "+233 20 987 4321", issue: "Flat Tire / Cannot Move", pickup: "Achimota Overpass", time: "28 min ago", status: "pending" as const },
-  { id: 3, customer: "Efua Amponsah", phone: "+233 27 111 2222", issue: "Accident / Collision", pickup: "Tema Motorway, KM 14", time: "1 hr ago", status: "accepted" as const },
-  { id: 4, customer: "Kofi Asante", phone: "+233 26 333 4444", issue: "Stuck in Ditch", pickup: "Kasoa Junction", time: "3 hrs ago", status: "completed" as const },
-  { id: 5, customer: "Akua Bediako", phone: "+233 24 666 7777", issue: "Battery Dead", pickup: "Osu, Oxford Street", time: "Yesterday", status: "completed" as const },
+type RequestStatus = "pending" | "accepted" | "declined" | "completed";
+
+interface TowRequest {
+  id: number;
+  customer: string;
+  phone: string;
+  issue: string;
+  pickup: string;
+  time: string;
+  status: RequestStatus;
+}
+
+const mockRequests: TowRequest[] = [
+  { id: 1, customer: "Ama Serwaa", phone: "+233 24 555 1234", issue: "Engine Failure", pickup: "Spintex Road, Accra", time: "12 min ago", status: "pending" },
+  { id: 2, customer: "Yaw Mensah", phone: "+233 20 987 4321", issue: "Flat Tire / Cannot Move", pickup: "Achimota Overpass", time: "28 min ago", status: "pending" },
+  { id: 3, customer: "Efua Amponsah", phone: "+233 27 111 2222", issue: "Accident / Collision", pickup: "Tema Motorway, KM 14", time: "1 hr ago", status: "accepted" },
+  { id: 4, customer: "Kofi Asante", phone: "+233 26 333 4444", issue: "Stuck in Ditch", pickup: "Kasoa Junction", time: "3 hrs ago", status: "completed" },
+  { id: 5, customer: "Akua Bediako", phone: "+233 24 666 7777", issue: "Battery Dead", pickup: "Osu, Oxford Street", time: "Yesterday", status: "completed" },
 ];
 
 const earningsData = {
