@@ -178,8 +178,13 @@ const Listings = () => {
                 </div>
 
                 {/* Action */}
-                <Button variant="outline" size="sm" className="w-full text-xs">
-                  Contact Operator
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full text-xs"
+                  onClick={() => navigate(`/operator/${truck.id}`)}
+                >
+                  View Operator
                 </Button>
               </div>
             ))}
