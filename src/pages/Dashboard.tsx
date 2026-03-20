@@ -44,6 +44,7 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navbar />
       {/* Header */}
       <div className="bg-primary px-6 py-4">
         <div className="container mx-auto flex items-center gap-4">
