@@ -1,5 +1,6 @@
 import { MapPin, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-tow.jpg";
 
 const Hero = () => {
@@ -54,9 +55,11 @@ const Hero = () => {
                 className="w-full h-12 pl-12 pr-4 rounded-lg bg-background/95 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-secondary text-sm"
               />
             </div>
-            <Button variant="hero" size="lg" className="h-12 px-6">
-              <Search className="w-4 h-4 mr-2" />
-              Find Tow Trucks
+            <Button variant="hero" size="lg" className="h-12 px-6" asChild>
+              <Link to="/listings">
+                <Search className="w-4 h-4 mr-2" />
+                Find Tow Trucks
+              </Link>
             </Button>
           </div>
 

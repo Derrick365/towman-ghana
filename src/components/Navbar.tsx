@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -8,18 +9,18 @@ const Navbar = () => {
   return (
     <nav className="absolute top-0 left-0 right-0 z-50 px-6 py-4">
       <div className="container mx-auto flex items-center justify-between">
-        <a href="/" className="text-xl font-display font-bold text-primary-foreground">
+        <Link to="/" className="text-xl font-display font-bold text-primary-foreground">
           Towman<span className="text-secondary">Ghana</span>
-        </a>
+        </Link>
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">
           <a href="#" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
             Find Operators
           </a>
-          <a href="#" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+          <Link to="/listings" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
             Services
-          </a>
+          </Link>
           <a href="#" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
             About
           </a>
