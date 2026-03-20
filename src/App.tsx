@@ -9,6 +9,7 @@ import OperatorDetail from "./pages/OperatorDetail.tsx";
 import Register from "./pages/Register.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
 import AddVehicle from "./pages/AddVehicle.tsx";
+import Login from "./pages/Login.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
