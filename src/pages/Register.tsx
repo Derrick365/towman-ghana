@@ -92,7 +92,9 @@ const Register = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      {/* Form */}
+      <div className="container mx-auto max-w-lg px-6 py-8">
+        <h1 className="text-2xl font-display font-bold text-foreground mb-1">Operator Registration</h1>
+        <p className="text-sm text-muted-foreground mb-6">100% Free — No charges</p>
       <div className="container mx-auto max-w-lg px-6 py-8">
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Full Name */}
