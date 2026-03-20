@@ -41,8 +41,8 @@ const Hero = () => {
             style={{ animationDelay: "0.35s" }}
           >
             Connecting you with verified tow truck operators across all 16
-            regions. Breakdowns, recoveries, or heavy haulage, help is never
-            far away.
+            regions. Breakdowns, recoveries, or heavy haulage, <strong>help is never
+            far away.</strong>
           </p>
 
           {/* Search bar */}
