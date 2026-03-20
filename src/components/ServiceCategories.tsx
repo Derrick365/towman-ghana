@@ -1,5 +1,6 @@
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { Truck, Container, Wrench, Shield } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const services = [
   {
