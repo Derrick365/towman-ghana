@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { MapPin, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import heroImage from "@/assets/hero-tow.jpg";
 
 const Hero = () => {
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
       {/* Background image */}
