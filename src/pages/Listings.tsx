@@ -65,7 +65,7 @@ const Listings = () => {
     <div className="min-h-screen bg-muted/30">
       <Navbar />
       {/* Header with dark bg for navbar visibility */}
-      <div className="bg-primary pb-12 pt-16 sm:pt-24">
+      <div className="bg-primary pb-8 sm:pb-12 pt-20 sm:pt-24">
         <div className="container mx-auto px-6">
           <h1 className="text-3xl sm:text-4xl font-bold font-display text-primary-foreground mb-2 animate-reveal-up">
             All Tow Trucks
