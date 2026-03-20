@@ -126,9 +126,8 @@ const FeaturedOperators = () => {
                 ))}
               </div>
 
-              <Button variant="outline" className="w-full" size="sm">
-                <Phone className="w-3.5 h-3.5 mr-1.5" />
-                Contact Operator
+              <Button variant="outline" className="w-full" size="sm" onClick={() => navigate(`/operator/${i + 1}`)}>
+                View Operator
               </Button>
             </div>
           ))}
