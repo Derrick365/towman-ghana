@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, Plus, Truck, MapPin, Phone, Mail, Image as ImageIcon } from "lucide-react";
@@ -43,22 +44,9 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="bg-primary px-6 py-4">
-        <div className="container mx-auto flex items-center gap-4">
-          <Link to="/" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-            <ArrowLeft className="w-5 h-5" />
-          </Link>
-          <div className="flex-1">
-            <h1 className="text-lg font-display font-bold text-primary-foreground">
-              My Dashboard
-            </h1>
-            <p className="text-xs text-primary-foreground/60">Manage your profile & vehicles</p>
-          </div>
-        </div>
-      </div>
-
+      <Navbar />
       <div className="container mx-auto max-w-lg px-6 py-6 space-y-6">
+        <h1 className="text-2xl font-display font-bold text-foreground">My Dashboard</h1>
         {/* Profile Summary */}
         <Card>
           <CardContent className="p-5 space-y-3">

@@ -7,7 +7,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="absolute top-0 left-0 right-0 z-50 px-6 py-4">
+    <nav className="sticky top-0 z-50 px-6 py-4 bg-primary">
       <div className="container mx-auto flex items-center justify-between">
         <Link to="/" className="text-xl font-display font-bold text-primary-foreground">
           Towman<span className="text-secondary">Ghana</span>
