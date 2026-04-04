@@ -61,7 +61,7 @@ const Listings = () => {
     const matchesRegion = selectedRegion === "All Regions" || l.region === selectedRegion;
     const matchesType = selectedType === "All Types" || l.type === selectedType;
     return matchesSearch && matchesRegion && matchesType;
-  });
+  }).sort((a, b) => (a.promoted === b.promoted ? 0 : a.promoted ? -1 : 1));
 
   return (
     <div className="min-h-screen bg-muted/30">
