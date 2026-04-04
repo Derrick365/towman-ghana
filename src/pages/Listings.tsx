@@ -152,14 +152,25 @@ const Listings = () => {
             {filtered.map((truck, i) => (
               <div
                 key={truck.id}
-                className={`rounded-xl border border-border bg-card p-5 hover:shadow-lg hover:shadow-gold/5 transition-all duration-300 group ${
-                  isVisible ? "animate-reveal-up" : "opacity-0"
-                }`}
+                className={`rounded-xl border bg-card p-5 hover:shadow-lg transition-all duration-300 group ${
+                  truck.promoted
+                    ? "border-secondary/50 ring-1 ring-secondary/20 shadow-md shadow-secondary/5 relative"
+                    : "border-border hover:shadow-gold/5"
+                } ${isVisible ? "animate-reveal-up" : "opacity-0"}`}
                 style={{ animationDelay: `${0.05 + i * 0.04}s` }}
               >
+                {/* Promoted Badge */}
+                {truck.promoted && (
+                  <div className="absolute -top-2.5 right-3">
+                    <span className="inline-flex items-center gap-1 bg-secondary text-secondary-foreground text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-sm">
+                      <Crown className="w-3 h-3" /> Featured
+                    </span>
+                  </div>
+                )}
+
                 {/* Header */}
                 <div className="flex items-start gap-3.5 mb-4">
-                  <div className="w-11 h-11 rounded-lg overflow-hidden shrink-0">
+                  <div className={`w-11 h-11 rounded-lg overflow-hidden shrink-0 ${truck.promoted ? "ring-2 ring-secondary/40" : ""}`}>
                     <img src={truck.photo} alt={truck.name} className="w-full h-full object-cover" />
                   </div>
                   <div className="min-w-0 flex-1">
