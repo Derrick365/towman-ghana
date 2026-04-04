@@ -6,6 +6,7 @@ import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
 import { Truck, DollarSign, Clock, CheckCircle2, XCircle, Phone, MapPin, TrendingUp } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import SubscriptionSection from "@/components/SubscriptionSection";
 
 type RequestStatus = "pending" | "accepted" | "declined" | "completed";
 
@@ -152,6 +153,9 @@ const OperatorDashboard = () => {
             </div>
           </section>
         )}
+
+        {/* Subscription */}
+        <SubscriptionSection currentPlan="Free" />
 
         {/* Completed */}
         <section className="space-y-3">
