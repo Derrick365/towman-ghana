@@ -154,6 +154,9 @@ const OperatorDashboard = () => {
           </section>
         )}
 
+        {/* Subscription */}
+        <SubscriptionSection currentPlan="Free" />
+
         {/* Completed */}
         <section className="space-y-3">
           <h2 className="text-lg font-semibold font-display text-foreground">Recent Completed ({completed.length})</h2>
