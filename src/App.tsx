@@ -18,6 +18,7 @@ import Privacy from "./pages/Privacy.tsx";
 import Contact from "./pages/Contact.tsx";
 import FAQ from "./pages/FAQ.tsx";
 import RequestTow from "./pages/RequestTow.tsx";
+import Pricing from "./pages/Pricing.tsx";
 import OperatorDashboard from "./pages/OperatorDashboard.tsx";
 import AdminLogin from "./pages/admin/AdminLogin.tsx";
 import AdminDashboard from "./pages/admin/AdminDashboard.tsx";
