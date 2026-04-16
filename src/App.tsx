@@ -19,6 +19,7 @@ import Contact from "./pages/Contact.tsx";
 import FAQ from "./pages/FAQ.tsx";
 import RequestTow from "./pages/RequestTow.tsx";
 import Pricing from "./pages/Pricing.tsx";
+import LegalCompliance from "./pages/LegalCompliance.tsx";
 import OperatorDashboard from "./pages/OperatorDashboard.tsx";
 import AdminLogin from "./pages/admin/AdminLogin.tsx";
 import AdminDashboard from "./pages/admin/AdminDashboard.tsx";
@@ -52,6 +53,7 @@ const App = () => (
             <Route path="/faq" element={<FAQ />} />
             <Route path="/request-tow" element={<RequestTow />} />
             <Route path="/pricing" element={<Pricing />} />
+            <Route path="/legal-compliance" element={<LegalCompliance />} />
             <Route path="/operator-dashboard" element={<OperatorDashboard />} />
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin" element={<AdminDashboard />} />
