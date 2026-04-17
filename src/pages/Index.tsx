@@ -5,6 +5,7 @@ import ServiceCategories from "@/components/ServiceCategories";
 import FeaturedOperators from "@/components/FeaturedOperators";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import StickyTowButton from "@/components/StickyTowButton";
 
 const Index = () => {
   return (
@@ -16,6 +17,7 @@ const Index = () => {
       <HowItWorks />
       <CTASection />
       <Footer />
+      <StickyTowButton />
     </div>
   );
 };
