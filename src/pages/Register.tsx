@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowLeft, CheckCircle, Truck } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const ghanaRegions = [
   "Greater Accra",
@@ -31,6 +32,7 @@ const ghanaRegions = [
 const Register = () => {
   const navigate = useNavigate();
   const [submitted, setSubmitted] = useState(false);
+  const [acceptedCompliance, setAcceptedCompliance] = useState(false);
   const [form, setForm] = useState({
     fullName: "",
     phone: "",
@@ -50,6 +52,15 @@ const Register = () => {
       toast({
         title: "Missing fields",
         description: "Please fill in all required fields.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!acceptedCompliance) {
+      toast({
+        title: "Compliance acceptance required",
+        description: "You must agree to the terms and compliance policies.",
         variant: "destructive",
       });
       return;
@@ -183,12 +194,30 @@ const Register = () => {
             />
           </div>
 
+          {/* Compliance acceptance */}
+          <div className="flex items-start gap-3 p-4 rounded-lg border border-border bg-muted/30">
+            <Checkbox
+              id="compliance"
+              checked={acceptedCompliance}
+              onCheckedChange={(c) => setAcceptedCompliance(c === true)}
+              className="mt-0.5"
+            />
+            <Label htmlFor="compliance" className="text-sm font-normal leading-relaxed cursor-pointer">
+              I confirm I hold a valid DVLA licence, roadworthy certificate, and insurance,
+              and I agree to Towman Ghana&apos;s{" "}
+              <Link to="/terms" className="text-secondary underline">Terms</Link>,{" "}
+              <Link to="/privacy" className="text-secondary underline">Privacy Policy</Link>, and{" "}
+              <Link to="/legal-compliance" className="text-secondary underline">Legal Compliance</Link>{" "}
+              requirements. <span className="text-destructive">*</span>
+            </Label>
+          </div>
+
           <Button type="submit" variant="hero" size="lg" className="w-full mt-4">
             Register for Free
           </Button>
 
           <p className="text-xs text-center text-muted-foreground pt-2">
-            By registering you agree to our terms of service. No fees, ever.
+            No fees, ever. Operators must comply with Ghana Road Traffic Act (Act 683).
           </p>
         </form>
       </div>
