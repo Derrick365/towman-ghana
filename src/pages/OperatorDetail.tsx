@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ReviewForm from "@/components/ReviewForm";
+import ReportOperatorDialog from "@/components/ReportOperatorDialog";
 import { MapPin, Star, Phone, Mail, ArrowLeft, ChevronLeft, ChevronRight, X, MessageSquare, Clock, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
@@ -272,6 +273,10 @@ const OperatorDetail = () => {
                   </div>
                 </div>
               )}
+
+              <div className="mt-4 pt-4 border-t border-border flex justify-center">
+                <ReportOperatorDialog operatorId={operator.id} operatorName={operator.name} />
+              </div>
             </div>
           </div>
         </div>
