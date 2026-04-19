@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { useAdminAuth } from "@/lib/admin-auth";
 import { Save } from "lucide-react";
+import IdleAbStatsCard from "@/components/admin/IdleAbStatsCard";
 
 const AdminSettings = () => {
   const { user } = useAdminAuth();
@@ -98,6 +99,8 @@ const AdminSettings = () => {
             </div>
           </CardContent>
         </Card>
+
+        <IdleAbStatsCard />
 
         <Card>
           <CardHeader className="pb-3">
