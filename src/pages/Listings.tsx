@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import IdleTowPrompt from "@/components/IdleTowPrompt";
 import ListingsMap from "@/components/ListingsMap";
 import { MapPin, Star, Filter, Search, ChevronDown, Map, List, Crown } from "lucide-react";
 import { Button } from "@/components/ui/button";

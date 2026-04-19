@@ -72,10 +72,10 @@ const IdleTowPrompt = ({
 
         <div className="px-6 pt-5 pb-6 text-center space-y-3">
           <DialogTitle className="text-xl font-display font-bold text-foreground">
-            Need a hand on the road?
+            {title}
           </DialogTitle>
           <DialogDescription className="text-sm text-muted-foreground leading-relaxed">
-            Looks like you're searching for help. Our verified operators across Ghana are ready to assist — request a tow in under a minute.
+            {description}
           </DialogDescription>
 
           <div className="flex flex-col gap-2 pt-3">
