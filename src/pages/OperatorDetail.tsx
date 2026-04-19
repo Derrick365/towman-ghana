@@ -285,7 +285,7 @@ const OperatorDetail = () => {
 
       <Footer />
       <IdleTowPrompt
-        delayMs={12_000}
+        page="operator"
         sessionKey="towman_idle_prompt_operator"
         title="Ready to book this operator?"
         description="If you've made up your mind, request a tow now and we'll connect you instantly."
