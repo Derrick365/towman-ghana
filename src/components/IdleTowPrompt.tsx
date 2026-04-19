@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/compone
 import { Button } from "@/components/ui/button";
 import { Truck, Phone } from "lucide-react";
 
-const DEFAULT_IDLE_DELAY_MS = 40_000; // 40s — sits between 30 and 50s
+const DEFAULT_IDLE_DELAY_MS = 15_000; // 15s — catches hesitation without feeling pushy
 const DEFAULT_SESSION_KEY = "towman_idle_prompt_shown";
 
 interface IdleTowPromptProps {
