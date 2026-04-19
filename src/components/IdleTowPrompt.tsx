@@ -4,21 +4,37 @@ import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/compone
 import { Button } from "@/components/ui/button";
 import { Truck, Phone } from "lucide-react";
 
-const IDLE_DELAY_MS = 40_000; // 40s — sits between 30 and 50s
-const SESSION_KEY = "towman_idle_prompt_shown";
+const DEFAULT_IDLE_DELAY_MS = 40_000; // 40s — sits between 30 and 50s
+const DEFAULT_SESSION_KEY = "towman_idle_prompt_shown";
 
-const IdleTowPrompt = () => {
+interface IdleTowPromptProps {
+  /** Idle delay in milliseconds before the prompt appears. Defaults to 40000 (40s). */
+  delayMs?: number;
+  /** sessionStorage key used to suppress repeat displays. Override to allow per-page prompts. */
+  sessionKey?: string;
+  /** Custom title text. */
+  title?: string;
+  /** Custom description text. */
+  description?: string;
+}
+
+const IdleTowPrompt = ({
+  delayMs = DEFAULT_IDLE_DELAY_MS,
+  sessionKey = DEFAULT_SESSION_KEY,
+  title = "Need a hand on the road?",
+  description = "Looks like you're searching for help. Our verified operators across Ghana are ready to assist — request a tow in under a minute.",
+}: IdleTowPromptProps = {}) => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
   const resetTimer = useCallback((timerRef: { current: number | null }) => {
-    if (sessionStorage.getItem(SESSION_KEY)) return;
+    if (sessionStorage.getItem(sessionKey)) return;
     if (timerRef.current) window.clearTimeout(timerRef.current);
-    timerRef.current = window.setTimeout(() => setOpen(true), IDLE_DELAY_MS);
-  }, []);
+    timerRef.current = window.setTimeout(() => setOpen(true), delayMs);
+  }, [delayMs, sessionKey]);
 
   useEffect(() => {
-    if (sessionStorage.getItem(SESSION_KEY)) return;
+    if (sessionStorage.getItem(sessionKey)) return;
 
     const timerRef: { current: number | null } = { current: null };
     const handleActivity = () => resetTimer(timerRef);
@@ -31,15 +47,15 @@ const IdleTowPrompt = () => {
       if (timerRef.current) window.clearTimeout(timerRef.current);
       events.forEach((e) => window.removeEventListener(e, handleActivity));
     };
-  }, [resetTimer]);
+  }, [resetTimer, sessionKey]);
 
   const handleClose = (next: boolean) => {
-    if (!next) sessionStorage.setItem(SESSION_KEY, "1");
+    if (!next) sessionStorage.setItem(sessionKey, "1");
     setOpen(next);
   };
 
   const handleRequestTow = () => {
-    sessionStorage.setItem(SESSION_KEY, "1");
+    sessionStorage.setItem(sessionKey, "1");
     setOpen(false);
     navigate("/request-tow");
   };
@@ -56,10 +72,10 @@ const IdleTowPrompt = () => {
 
         <div className="px-6 pt-5 pb-6 text-center space-y-3">
           <DialogTitle className="text-xl font-display font-bold text-foreground">
-            Need a hand on the road?
+            {title}
           </DialogTitle>
           <DialogDescription className="text-sm text-muted-foreground leading-relaxed">
-            Looks like you're searching for help. Our verified operators across Ghana are ready to assist — request a tow in under a minute.
+            {description}
           </DialogDescription>
 
           <div className="flex flex-col gap-2 pt-3">
