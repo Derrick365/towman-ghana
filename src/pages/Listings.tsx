@@ -229,7 +229,7 @@ const Listings = () => {
 
       <Footer />
       <IdleTowPrompt
-        delayMs={20_000}
+        page="listings"
         sessionKey="towman_idle_prompt_listings"
         title="Can't decide on an operator?"
         description="Tell us what you need and we'll match you with the right verified operator nearby — takes less than a minute."

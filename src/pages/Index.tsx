@@ -19,7 +19,7 @@ const Index = () => {
       <CTASection />
       <Footer />
       <StickyTowButton />
-      <IdleTowPrompt />
+      <IdleTowPrompt page="home" />
     </div>
   );
 };
