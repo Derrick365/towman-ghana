@@ -16,6 +16,8 @@ interface IdleTowPromptProps {
   title?: string;
   /** Custom description text. */
   description?: string;
+  /** Enable exit-intent trigger on desktop (cursor leaving the top of the viewport). Defaults to true. */
+  exitIntent?: boolean;
 }
 
 const IdleTowPrompt = ({
@@ -23,6 +25,7 @@ const IdleTowPrompt = ({
   sessionKey = DEFAULT_SESSION_KEY,
   title = "Need a hand on the road?",
   description = "Looks like you're searching for help. Our verified operators across Ghana are ready to assist — request a tow in under a minute.",
+  exitIntent = true,
 }: IdleTowPromptProps = {}) => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
@@ -33,6 +36,7 @@ const IdleTowPrompt = ({
     timerRef.current = window.setTimeout(() => setOpen(true), delayMs);
   }, [delayMs, sessionKey]);
 
+  // Idle timer
   useEffect(() => {
     if (sessionStorage.getItem(sessionKey)) return;
 
@@ -48,6 +52,33 @@ const IdleTowPrompt = ({
       events.forEach((e) => window.removeEventListener(e, handleActivity));
     };
   }, [resetTimer, sessionKey]);
+
+  // Exit-intent trigger (desktop only — touch devices don't have a meaningful "leave" gesture)
+  useEffect(() => {
+    if (!exitIntent) return;
+    if (sessionStorage.getItem(sessionKey)) return;
+    // Skip on touch / coarse-pointer devices
+    if (typeof window.matchMedia === "function" && window.matchMedia("(pointer: coarse)").matches) return;
+
+    let armed = false;
+    // Arm after a brief delay so the popup doesn't fire on initial page load mouse movement
+    const armTimeout = window.setTimeout(() => { armed = true; }, 3_000);
+
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (!armed) return;
+      if (sessionStorage.getItem(sessionKey)) return;
+      // Fire only when leaving via the top edge (toward tabs / close button)
+      if (e.clientY <= 0 && (e.relatedTarget === null || (e.relatedTarget as Node)?.nodeName === "HTML")) {
+        setOpen(true);
+      }
+    };
+
+    document.addEventListener("mouseleave", handleMouseLeave);
+    return () => {
+      window.clearTimeout(armTimeout);
+      document.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, [exitIntent, sessionKey]);
 
   const handleClose = (next: boolean) => {
     if (!next) sessionStorage.setItem(sessionKey, "1");
