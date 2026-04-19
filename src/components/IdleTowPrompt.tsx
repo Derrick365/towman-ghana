@@ -1,14 +1,18 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useMemo, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Truck, Phone } from "lucide-react";
+import {
+  IDLE_VARIANT_DELAYS,
+  getIdleVariant,
+  trackIdleEvent,
+} from "@/lib/ab-testing";
 
-const DEFAULT_IDLE_DELAY_MS = 15_000; // 15s — catches hesitation without feeling pushy
 const DEFAULT_SESSION_KEY = "towman_idle_prompt_shown";
 
 interface IdleTowPromptProps {
-  /** Idle delay in milliseconds before the prompt appears. Defaults to 40000 (40s). */
+  /** Override the A/B variant delay. When omitted, the user's assigned variant (10s or 20s) is used. */
   delayMs?: number;
   /** sessionStorage key used to suppress repeat displays. Override to allow per-page prompts. */
   sessionKey?: string;
@@ -18,23 +22,39 @@ interface IdleTowPromptProps {
   description?: string;
   /** Enable exit-intent trigger on desktop (cursor leaving the top of the viewport). Defaults to true. */
   exitIntent?: boolean;
+  /** Page identifier for A/B analytics (e.g. "home", "listings", "operator"). */
+  page?: string;
 }
 
 const IdleTowPrompt = ({
-  delayMs = DEFAULT_IDLE_DELAY_MS,
+  delayMs,
   sessionKey = DEFAULT_SESSION_KEY,
   title = "Need a hand on the road?",
   description = "Looks like you're searching for help. Our verified operators across Ghana are ready to assist — request a tow in under a minute.",
   exitIntent = true,
+  page = "home",
 }: IdleTowPromptProps = {}) => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
+  // Sticky A/B variant for this browser
+  const variant = useMemo(() => getIdleVariant(), []);
+  const effectiveDelay = delayMs ?? IDLE_VARIANT_DELAYS[variant];
+
+  // Track impression only once per mount when the popup actually opens
+  const impressionTracked = useRef(false);
+  useEffect(() => {
+    if (open && !impressionTracked.current) {
+      impressionTracked.current = true;
+      trackIdleEvent("impression", page, variant);
+    }
+  }, [open, page, variant]);
+
   const resetTimer = useCallback((timerRef: { current: number | null }) => {
     if (sessionStorage.getItem(sessionKey)) return;
     if (timerRef.current) window.clearTimeout(timerRef.current);
-    timerRef.current = window.setTimeout(() => setOpen(true), delayMs);
-  }, [delayMs, sessionKey]);
+    timerRef.current = window.setTimeout(() => setOpen(true), effectiveDelay);
+  }, [effectiveDelay, sessionKey]);
 
   // Idle timer
   useEffect(() => {
@@ -57,17 +77,14 @@ const IdleTowPrompt = ({
   useEffect(() => {
     if (!exitIntent) return;
     if (sessionStorage.getItem(sessionKey)) return;
-    // Skip on touch / coarse-pointer devices
     if (typeof window.matchMedia === "function" && window.matchMedia("(pointer: coarse)").matches) return;
 
     let armed = false;
-    // Arm after a brief delay so the popup doesn't fire on initial page load mouse movement
     const armTimeout = window.setTimeout(() => { armed = true; }, 3_000);
 
     const handleMouseLeave = (e: MouseEvent) => {
       if (!armed) return;
       if (sessionStorage.getItem(sessionKey)) return;
-      // Fire only when leaving via the top edge (toward tabs / close button)
       if (e.clientY <= 0 && (e.relatedTarget === null || (e.relatedTarget as Node)?.nodeName === "HTML")) {
         setOpen(true);
       }
@@ -81,12 +98,17 @@ const IdleTowPrompt = ({
   }, [exitIntent, sessionKey]);
 
   const handleClose = (next: boolean) => {
-    if (!next) sessionStorage.setItem(sessionKey, "1");
+    if (!next) {
+      sessionStorage.setItem(sessionKey, "1");
+      // Only count as a dismissal if the popup had actually been shown
+      if (impressionTracked.current) trackIdleEvent("dismissal", page, variant);
+    }
     setOpen(next);
   };
 
   const handleRequestTow = () => {
     sessionStorage.setItem(sessionKey, "1");
+    trackIdleEvent("conversion", page, variant);
     setOpen(false);
     navigate("/request-tow");
   };
