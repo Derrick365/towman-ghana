@@ -6,6 +6,7 @@ import FeaturedOperators from "@/components/FeaturedOperators";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import StickyTowButton from "@/components/StickyTowButton";
+import IdleTowPrompt from "@/components/IdleTowPrompt";
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
       <CTASection />
       <Footer />
       <StickyTowButton />
+      <IdleTowPrompt page="home" />
     </div>
   );
 };

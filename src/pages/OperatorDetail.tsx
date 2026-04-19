@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import IdleTowPrompt from "@/components/IdleTowPrompt";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ReviewForm from "@/components/ReviewForm";
@@ -283,6 +284,12 @@ const OperatorDetail = () => {
       </div>
 
       <Footer />
+      <IdleTowPrompt
+        page="operator"
+        sessionKey="towman_idle_prompt_operator"
+        title="Ready to book this operator?"
+        description="If you've made up your mind, request a tow now and we'll connect you instantly."
+      />
     </div>
   );
 };
