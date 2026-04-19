@@ -228,6 +228,12 @@ const Listings = () => {
       </div>
 
       <Footer />
+      <IdleTowPrompt
+        delayMs={45_000}
+        sessionKey="towman_idle_prompt_listings"
+        title="Can't decide on an operator?"
+        description="Tell us what you need and we'll match you with the right verified operator nearby — takes less than a minute."
+      />
     </div>
   );
 };
