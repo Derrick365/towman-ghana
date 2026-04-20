@@ -12,3 +12,11 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://towmanghana.com/sitemap.xml
+
+# Disallow admin pages from crawlers
+Disallow: /admin
+Disallow: /admin/
+Disallow: /dashboard
+Disallow: /operator-dashboard
