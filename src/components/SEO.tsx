@@ -1,5 +1,6 @@
-/* SEO Component — Reusable meta tags, Open Graph, Twitter Cards, and JSON-LD structured data */
-import { Helmet } from "react-helmet-async";
+/* SEO Component — Lightweight meta tags, Open Graph, Twitter Cards, and JSON-LD structured data.
+   Uses direct DOM manipulation instead of react-helmet to avoid dual-React-instance issues. */
+import { useEffect } from "react";
 
 interface SEOProps {
   title: string;
@@ -9,12 +10,22 @@ interface SEOProps {
   ogType?: string;
   noIndex?: boolean;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
-  children?: React.ReactNode;
 }
 
 const SITE_NAME = "Towman Ghana";
 const BASE_URL = "https://towmanghana.com";
 const DEFAULT_IMAGE = `${BASE_URL}/og-image.jpg`;
+
+/* Helper: set or create a <meta> tag */
+function setMeta(attr: string, key: string, content: string) {
+  let el = document.querySelector(`meta[${attr}="${key}"]`) as HTMLMetaElement | null;
+  if (!el) {
+    el = document.createElement("meta");
+    el.setAttribute(attr, key);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("content", content);
+}
 
 const SEO = ({
   title,
@@ -24,48 +35,59 @@ const SEO = ({
   ogType = "website",
   noIndex = false,
   jsonLd,
-  children,
 }: SEOProps) => {
   const fullTitle = title === SITE_NAME ? title : `${title} | ${SITE_NAME}`;
   const canonicalUrl = canonical ? `${BASE_URL}${canonical}` : undefined;
 
-  const jsonLdArray = jsonLd
-    ? Array.isArray(jsonLd)
-      ? jsonLd
-      : [jsonLd]
-    : [];
+  useEffect(() => {
+    /* Title */
+    document.title = fullTitle;
 
-  return (
-    <Helmet>
-      <title>{fullTitle}</title>
-      <meta name="description" content={description} />
-      {noIndex && <meta name="robots" content="noindex,nofollow" />}
-      {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    /* Standard meta */
+    setMeta("name", "description", description);
+    if (noIndex) setMeta("name", "robots", "noindex,nofollow");
 
-      {/* Open Graph */}
-      <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
-      <meta property="og:type" content={ogType} />
-      <meta property="og:image" content={ogImage} />
-      <meta property="og:site_name" content={SITE_NAME} />
-      {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    /* Canonical */
+    let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (canonicalUrl) {
+      if (!link) {
+        link = document.createElement("link");
+        link.setAttribute("rel", "canonical");
+        document.head.appendChild(link);
+      }
+      link.setAttribute("href", canonicalUrl);
+    }
 
-      {/* Twitter Card */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={ogImage} />
+    /* Open Graph */
+    setMeta("property", "og:title", fullTitle);
+    setMeta("property", "og:description", description);
+    setMeta("property", "og:type", ogType);
+    setMeta("property", "og:image", ogImage);
+    setMeta("property", "og:site_name", SITE_NAME);
+    if (canonicalUrl) setMeta("property", "og:url", canonicalUrl);
 
-      {/* JSON-LD Structured Data */}
-      {jsonLdArray.map((data, i) => (
-        <script key={i} type="application/ld+json">
-          {JSON.stringify(data)}
-        </script>
-      ))}
+    /* Twitter */
+    setMeta("name", "twitter:title", fullTitle);
+    setMeta("name", "twitter:description", description);
+    setMeta("name", "twitter:image", ogImage);
 
-      {children}
-    </Helmet>
-  );
+    /* JSON-LD */
+    const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+    const scripts: HTMLScriptElement[] = [];
+    jsonLdArray.forEach((data) => {
+      const s = document.createElement("script");
+      s.type = "application/ld+json";
+      s.textContent = JSON.stringify(data);
+      document.head.appendChild(s);
+      scripts.push(s);
+    });
+
+    return () => {
+      scripts.forEach((s) => s.remove());
+    };
+  }, [fullTitle, description, canonicalUrl, ogImage, ogType, noIndex, jsonLd]);
+
+  return null;
 };
 
 export default SEO;
