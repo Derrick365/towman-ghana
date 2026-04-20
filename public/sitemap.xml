@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Core Pages -->
+  <url><loc>https://towmanghana.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://towmanghana.com/listings</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://towmanghana.com/request-tow</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://towmanghana.com/about</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://towmanghana.com/faq</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://towmanghana.com/contact</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://towmanghana.com/register</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://towmanghana.com/pricing</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://towmanghana.com/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://towmanghana.com/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://towmanghana.com/legal-compliance</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+
+  <!-- City Landing Pages (Local SEO) -->
+  <url><loc>https://towmanghana.com/towing/accra</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://towmanghana.com/towing/kumasi</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://towmanghana.com/towing/takoradi</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://towmanghana.com/towing/tamale</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://towmanghana.com/towing/cape-coast</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://towmanghana.com/towing/ho</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://towmanghana.com/towing/sunyani</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://towmanghana.com/towing/koforidua</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+
+  <!-- Blog -->
+  <url><loc>https://towmanghana.com/blog</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://towmanghana.com/blog/what-to-do-car-breaks-down-ghana</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://towmanghana.com/blog/cost-of-towing-services-accra</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://towmanghana.com/blog/choosing-right-tow-truck-type</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+</urlset>

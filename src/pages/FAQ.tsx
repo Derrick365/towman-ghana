@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEO, { faqJsonLd, breadcrumbJsonLd } from "@/components/SEO";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -17,8 +18,23 @@ const faqs = [
   { q: "Do you offer 24/7 service?", a: "Many operators on our platform offer 24/7 emergency towing. Check individual operator profiles for their availability hours. You can also filter for currently available operators." },
 ];
 
-const FAQ = () => (
+const FAQ = () => {
+  const faqItems = faqs.map((f) => ({ question: f.q, answer: f.a }));
+
+  return (
   <div className="min-h-screen bg-background">
+    <SEO
+      title="FAQ — Frequently Asked Questions"
+      description="Answers to common questions about towing services in Ghana. Learn about pricing, operator verification, coverage areas, and how Towman Ghana works."
+      canonical="/faq"
+      jsonLd={[
+        faqJsonLd(faqItems),
+        breadcrumbJsonLd([
+          { name: "Home", url: "/" },
+          { name: "FAQ", url: "/faq" },
+        ]),
+      ]}
+    />
     <Navbar />
     <div className="bg-primary pt-20 pb-12 px-6">
       <div className="container mx-auto max-w-3xl text-center">
@@ -57,6 +73,7 @@ const FAQ = () => (
 
     <Footer />
   </div>
-);
+  );
+};
 
 export default FAQ;
