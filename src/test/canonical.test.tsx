@@ -1,24 +1,50 @@
-import { describe, it, expect, afterEach } from "vitest";
+import { describe, it, expect, afterEach, beforeAll } from "vitest";
 import { render, cleanup } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Index from "@/pages/Index";
 import CityLanding from "@/pages/CityLanding";
 import Blog from "@/pages/Blog";
 
+beforeAll(() => {
+  if (!globalThis.IntersectionObserver) {
+    globalThis.IntersectionObserver = class {
+      constructor() {}
+      observe() {}
+      unobserve() {}
+      disconnect() {}
+    } as any;
+  }
+});
+
 afterEach(() => {
   cleanup();
-  // Remove any canonical links added by SEO component
   document.querySelectorAll('link[rel="canonical"]').forEach((el) => el.remove());
-  // Reset title
   document.title = "";
 });
 
-function renderWithRouter(ui: React.ReactElement, { route = "/" } = {}) {
+function wrap(ui: React.ReactElement, route: string) {
   const qc = new QueryClient({ defaultOptions: { queries: { retry: false } } });
   return render(
     <QueryClientProvider client={qc}>
-      <MemoryRouter initialEntries={[route]}>{ui}</MemoryRouter>
+      <MemoryRouter initialEntries={[route]}>
+        <Routes>
+          <Route path="*" element={ui} />
+        </Routes>
+      </MemoryRouter>
+    </QueryClientProvider>
+  );
+}
+
+function wrapWithParam(route: string, pattern: string, ui: React.ReactElement) {
+  const qc = new QueryClient({ defaultOptions: { queries: { retry: false } } });
+  return render(
+    <QueryClientProvider client={qc}>
+      <MemoryRouter initialEntries={[route]}>
+        <Routes>
+          <Route path={pattern} element={ui} />
+        </Routes>
+      </MemoryRouter>
     </QueryClientProvider>
   );
 }
@@ -27,8 +53,7 @@ const BASE = "https://towmanghana.com";
 
 describe("Canonical link tags", () => {
   it("/ renders canonical https://towmanghana.com/", async () => {
-    renderWithRouter(<Index />);
-    // SEO component runs in useEffect — wait a tick
+    wrap(<Index />, "/");
     await new Promise((r) => setTimeout(r, 50));
     const link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
     expect(link).not.toBeNull();
@@ -36,7 +61,7 @@ describe("Canonical link tags", () => {
   });
 
   it("/towing/accra renders canonical https://towmanghana.com/towing/accra", async () => {
-    renderWithRouter(<CityLanding />, { route: "/towing/accra" });
+    wrapWithParam("/towing/accra", "/towing/:city", <CityLanding />);
     await new Promise((r) => setTimeout(r, 50));
     const link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
     expect(link).not.toBeNull();
@@ -44,7 +69,7 @@ describe("Canonical link tags", () => {
   });
 
   it("/blog renders canonical https://towmanghana.com/blog", async () => {
-    renderWithRouter(<Blog />);
+    wrap(<Blog />, "/blog");
     await new Promise((r) => setTimeout(r, 50));
     const link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
     expect(link).not.toBeNull();
