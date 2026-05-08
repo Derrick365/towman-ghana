@@ -14,7 +14,7 @@ interface SEOProps {
 
 const SITE_NAME = "Towman Ghana";
 const BASE_URL = "https://towmanghana.com";
-const DEFAULT_IMAGE = `${BASE_URL}/og-image.jpg`;
+const DEFAULT_IMAGE = `${BASE_URL}/logo.png`;
 
 /* Helper: set or create a <meta> tag */
 function setMeta(attr: string, key: string, content: string) {
