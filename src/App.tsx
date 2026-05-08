@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AdminAuthProvider } from "@/lib/admin-auth";
 import CookieConsent from "@/components/CookieConsent";
+import Watermark from "@/components/Watermark";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
@@ -80,6 +81,7 @@ const App = () => (
             </Routes>
           </Suspense>
           <CookieConsent />
+          <Watermark />
         </AdminAuthProvider>
       </BrowserRouter>
     </TooltipProvider>

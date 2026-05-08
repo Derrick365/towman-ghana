@@ -1,5 +1,6 @@
 import { MapPin, Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
@@ -8,9 +9,12 @@ const Footer = () => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1 space-y-4">
-            <h3 className="text-lg font-display font-bold text-primary-foreground">
-              Towman Ghana
-            </h3>
+            <div className="flex items-center gap-3">
+              <img src={logo} alt="Towman Ghana logo" width={40} height={40} className="w-10 h-10 rounded-md" />
+              <h3 className="text-lg font-display font-bold text-primary-foreground">
+                Towman Ghana
+              </h3>
+            </div>
             <p className="text-sm leading-relaxed">
               Ghana's centralized platform for tow truck operators and those who
               need them.
